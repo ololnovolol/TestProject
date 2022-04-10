@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ApiService } from 'src/shared/services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'products 2';
+  title = 'List of products';
   products: any;
-  constructor(private http: HttpClient) {
-    http.get("localhost:5001/api/products").subscribe(data => {
-      console.log(data);
+  constructor(apiService: ApiService) {
+    apiService.get("https:localhost:5001/api/products").subscribe(data => {
       this.products = data;
     })
   }
