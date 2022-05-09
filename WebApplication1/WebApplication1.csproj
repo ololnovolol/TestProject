@@ -14,4 +14,9 @@
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
+    <ProjectReference Include="..\DataAcessLayar\DataAcessLayar.csproj" />
+  </ItemGroup>
 </Project>

@@ -7,11 +7,11 @@ import { ApiService } from 'src/shared/services/api.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'List of products';
-  products: any;
+  title = 'List of users';
+  users: any;
   constructor(apiService: ApiService) {
-    apiService.get("https:localhost:5001/api/products").subscribe(data => {
-      this.products = data;
+    apiService.get("https:localhost:5001/api/users").subscribe(data => {
+      this.users = data;
     })
   }
 }

@@ -1,7 +1,10 @@
+using BusinessLogic;
+using DataAcessLayar.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1
 {
@@ -32,7 +35,15 @@ namespace WebApplication1
 
             // Package depndency
             // Castom dependency
-            // TODO: Add my own dependency
+            ConfigureDatabase(services);
+            services.RegisterBusinessLogicServices();
+        }
+
+        protected virtual void ConfigureDatabase(IServiceCollection services)
+        {
+            // TODO: read connection string from settings.json
+            var connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=TestAppDb;Trusted_Connection=True;";
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
